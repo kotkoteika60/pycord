@@ -1,0 +1,639 @@
+AddGamepadRumble
+void AddGamepadRumble( time, decreasingTime, leftEngine, rightEngine, leftTrigger = 0.0f, rightTrigger = 0.0f, channelId = 1 )
+Add rumble to gamepad
+
+GetSpectatorTargetIdx
+idx GetSpectatorTargetIdx( [int localClientIdx])
+return spectate target racer idx
+
+MpServerStart
+bool MpServerStart( [string mapName], [string gameplay], [table mapLoadParams] )
+Start server
+
+StartGame
+bool StartGame({ map='tower', gameplay='Assault', envSettingPreset=577994, festivals={'TANKS'}, extra={force_num_bots=4, difficulty=2, botlist='psycho' }, cameraDir=Vec3(0,0,0), cameraPos=Vec3(0,0,0), cameraUp=Vec3(0,0,0)} )
+Start game on specified level with specified gameplay and parameters. map - required parameter.
+
+MpClientConnect
+bool MpClientConnect( const char* address, [ optional ]int port )
+Connect to server
+
+ServerLuaRpcEx
+void ServerLuaRpc( int clientNum, string globalFuncName, ... <funcParams> )
+execute RPC on given client
+
+ClientLuaRpcEx
+void ClientLuaRpc( string globalFuncName, ... <funcParams> )
+execute RPC on server
+
+MpFindLanGames
+bool MpFindLanGames()
+Broadcast request to search for LAN games
+
+MpServerClose
+bool MpServerClose( int reason )
+Close multiplayer server
+
+MpClientDisconnect
+bool MpClientDisconnect( int reason )
+Disconnect lien from multiplayer game
+
+Game_IsServer
+bool Game_IsServer()
+return true if current level was launched as multiplayer host
+
+Game_IsClient
+bool Game_IsClient()
+return true if current level was launched as multiplayer client
+
+Game_IsObserverMode
+bool Game_IsObserverMode()
+return true if local client is observer or it is dedicated server
+
+Game_LocalClientNum
+int Game_LocalClientNum()
+return local client num (always == 0 for singleplayer or multiplayer host; always > 0 for mp client; -1 for no local client)
+
+Game_GetGameMode
+string Game_GetGameMode()
+Return game mode of current level
+
+AddCameraEffect
+void AddCameraEffect( int effectSlot, effectEntity )
+PlayerView: add camera-aligned effect
+
+GetLevelName
+const char* GetLevelName()
+Return current level name
+
+GetUserGameFolder
+string GetUserGameFolder()
+Return the user folder absolute path
+
+FileExists
+bool FileExists( string filePath )
+Detect if specified file ixists
+
+WriteStringToFile
+void WriteStringToFile( string filePath, string str)
+Open/create a file and write the string into it
+
+ReadStringFromFile
+string ReadStringFromFile( string filePath )
+Open the file and read data from it into a string
+
+DeleteFile
+bool DeleteFile( string name )
+Delete a file
+
+DeleteFolder
+bool DeleteFolder( string name )
+
+MoveFile
+bool MoveFile( string oldName, string newName )
+Move/rename a file
+
+GetFileNameUnified
+string UnifyFileName( string fileName )
+Unify file name
+
+GetAllPlayersInfo
+table GetAllPlayersInfo()
+Returns information about all active players
+
+GetPlayerInfo
+table GetPlayerInfo( int playerIdx )
+Returns information about connected player with specified index
+
+GetInputControlMode
+int GetInputControlMode()
+return current input controll mode
+
+DrawDebugText
+void DrawDebugText( int size, float x, float y, string text, [float timeToDraw] )
+draw debug text on screen (x, y - screen coordinates), size = [0;2]
+
+DrawDebugLine
+void DrawDebugLine( Vec3 point1, Vec3 point2, int color, [bool zBuffer], [float timeToDraw] )
+draw debug line in 3d
+
+DrawDebugSphere
+void DrawDebugSphere( Vec3 center, float radius, int color, [bool nurb], [bool zBuffer], [float timeToDraw] )
+draw debug sphere in 3d
+
+GetCanvasWidth
+float GetCanvasWidth()
+Return Canvas::GetWidth()
+
+GetCanvasHeight
+float GetCanvasHeight()
+Return Canvas::Height()
+
+IsRayIntersectEntity
+bool float IsRayIntersectEntity( Vec3 start, Vec3 dir, float maxDist, entityId )
+return true if specified entity intersect EntitiBounds and distance to intersection
+
+TraceLine
+<enity> <point> <normal> TraceLine( start, end, [onlyStatic] )
+do physic traceline
+
+ProjectPointToScreen
+float, float, float ProjectPointToScreen( Vec3 )
+
+ProjectPointToScreenClamped
+float, float ProjectPointToScreen( Vec3 worlsPos, Vec2 topLeft, Vec2 botRight )
+
+PlatformOpenUrl
+void PlatformOpenUrl( command )
+
+GetAppVersion
+string GetAppVersion()
+
+GetAppBuildMark
+string GetAppBuildMark()
+
+IsAppDevRun
+bool IsAppDevRun()
+
+GetU64Time
+uint64_t GetU64Time()
+
+ParseXmlFile
+table ParseXmlFile( filename )
+
+ParseJsonFile
+table ParseJsonFile( filename )
+
+TraceMouse
+entity TraceMouse()
+Return trace result from camera to mouse pos
+
+TraceEntityAabb
+bool, Vec3 TraceEntityAabb( RttiBase* )
+Return trace result from camera to entity aabb
+
+GetCameraFovY
+float GetCameraFovY()
+
+GetCameraMouseDir
+Vec3 GetCameraMouseDir()
+return mouse direction from camera pos
+
+GetMouseCursorPos
+Vec2 GetMouseCursorPos()
+return mouse cursor position (in window space)
+
+IsCursorHidden
+bool IsCursorHidden()
+
+GetAllEntitiesByClass
+objArr GetAllEntitiesByClass( className )
+return array of entities of specified class
+
+GetAllEntitiesByPrefix
+objArr GetAllEntitiesByPrefix( prefix, [className] )
+return array of entities with name statring from prefix (and specified class)
+
+IsLastInputWasFromGamepad
+bool IsLastInputWasFromGamepad()
+Return true if last input was from gamepad
+
+LocalizeString
+string LocalizeString( string strId )
+return localized in current language
+
+PlayAmbientSound
+void PlayAmbientSound( string objName )
+Start ambient sound by name
+
+PlaySoundSpectatable
+void PlaySoundSpectatable( string soundName, Vec3 pos, BaseEntity entity )
+Play spectatble sound for entity by sound name.
+
+PlaySound3D
+void PlaySound3D( string soundName, Vec3 pos )
+Play 3d-sound by name
+
+PlaySound2D
+void PlaySound2D( string soundName )
+Play 2d-sound by name
+
+CreateAttachedBeam
+object CreateAttachedBeam(string beamDefName, Vec3 | (object[, boneName]), Vec3 | (object[, boneName]))
+Create beam effect attached to 2 entities.
+
+EmitEffect
+void EmitEffect( string effect, Vec3 pos, Vec3 normal )
+Emit effect in world position.
+
+NavMesh_FindPlaceForRespawn
+Vec3 NavMesh_FindPlaceForRespawn( Vec3 desiredPos )
+can return nil if NavMesh invalid
+
+NavMesh_FindPlaceToDropCargo
+can return nul if NavMesh invalid
+Vec3 NavMesh_FindPlaceToDropCargo( Vec3 desiredPos )
+
+NavMesh_GetDistance
+can return nul if NavMesh invalid
+float NavMesh_GetDistance( Vec3 from, Vec3 to )
+
+PrecacheDef
+void PrecacheDef( string defName )
+Precache def by given name.
+
+PrecacheCinematic
+void PrecacheCinematic( string* sequenceName )
+Precache Cinematic sequence by given name.
+
+PrecacheDye
+void PrecacheDye( string defName )
+Precache dye by given name.
+
+PrecacheCarDesign
+table PrecacheCarDesign( filename )
+Precache car design from specified file.
+
+PrecacheMob
+table PrecacheMob( mobDefName )
+Precache all cardesigns of specified mobDef.
+
+ScriptPrint
+void ScriptPrint( args )
+log to console
+
+ScriptPrintError
+void ScriptPrintError( args )
+log ERROR message
+
+ExecScriptFile
+void ExecScriptFile( fileName )
+run script file
+
+RuleConsole
+void RuleConsole( command )
+execute console command
+
+GetFileList
+table GetFileList( path )
+return list of files (wildcards ok)
+
+ScriptWriteFile
+void ScriptWriteFile( fileName, string )
+write specified string into file
+
+IsDebuggerEnabled
+bool IsDebuggerEnabled()
+return lua debug opportunity
+
+GetSearchDirectories
+void GetSearchDirectories()
+return reverted list of search directories
+
+ReloadScripts
+void ReloadScripts()
+reload changed script files
+
+CL_GetPlayerCar
+Car* CL_GetPlayerCar( [playerIdx] )
+return car ptr of local player or of specified player
+
+SV_SpawnPlayerCarDesign
+Car* SV_SpawnPlayerCarDesign( playerIdx, [designFileName], [pos], [dir] )
+Spawn Car for specified player (remove his previous car
+
+SV_SpawnCarDesign
+Car* SV_SpawnCarDesign( designFileName, name, [pos], [dir] )
+spawn a non player's car from design file
+
+SV_SpawnMob
+Car* SV_SpawnMob( mobDefName, [pos], [dir], [relation] )
+spawn a non player's car from MobDef description
+
+SV_SpawnWagon
+Car* SV_SpawnWagon( parentCar, designFileName, [damageable] )
+Connect wagon to parentCar.
+
+GetPlayerCarDesign
+table GetPlayerCarDesign()
+get car design of player's active car
+
+GetCarDesignFromFile
+table GetCarDesignFromFile( filename )
+get car design parsed from specified file
+
+GetAllPlayersCar
+objArray GetAllPlayersCar()
+return array of all players car
+
+SV_SpellCast
+Aura* SV_SpellCast( spellDefName, inflictorEntity, directTargetEntityId, origin, [casterEntityId] )
+
+SpawnSpot_FindRandomPos
+Vec3 SpawnSpot_FindRandomPos(SpawnSpot*, Car*)
+Return random position in spawn area for specified car.
+
+FireBullets
+void FireBullets( string projectileDefName, obj inflictor, Vec3 start, table targetIDs, bool ignoreOtherEntities )
+fire instant bullet
+
+SV_CarMovement_StartPlay
+bool SV_CarMovement_StartPlay( obj entity, string recordName )
+Start playing record for entity (return false if record doesn't exist)
+
+SV_CarMovement_IsPlaying
+bool SV_CarMovement_IsPlaying( obj entity )
+Return true if entity is controlled by manager
+
+SV_CarMovement_GetRecordTime
+float SV_CarMovement_GetRecordTime( obj entity )
+Return elapsed time for record that running with that entity.
+
+SV_CarMovement_GetRecordDuration
+float SV_CarMovement_GetRecordDuration( obj entity )
+Return duration for record that running with that entity.
+
+SV_CarMovement_GetRecordPlaySpeed
+float SV_CarMovement_GetRecordPlaySpeed( obj entity )
+Return playSpeed for record that running with that entity.
+
+SV_CarMovement_GetStartPosDir
+Vec3 SV_CarMovement_GetStartPosDir( string recordName )
+Return car position and direction at first frame.
+
+SV_CarMovement_GetEndPosDir
+Vec3 SV_CarMovement_GetEndPosDir( string recordName )
+Return car position and direction at last frame.
+
+SV_Cinematic_GetCarsEndPosDir
+objArray SV_Cinematic_GetCarsEndPosDir( string cinematicName )
+Return array with tags, designs, poses and dirs for all cars at the end of cinematic.
+
+SV_SetMapBound
+void SV_SetMapBound( obj Entity )
+Set mapBound and applicable minimap texture for clients.
+
+SV_ResetMapBoundToDefault
+void SV_ResetMapBoundToDefault( void )
+Set mapBound and applicable minimap texture to defaults
+post_pgo_initialization;
+
+SV_HudHighlightArea
+void SV_HudHighlightArea( playerIdx, areaName, [color] )
+Highlight area on HudMap for player.
+
+SV_HudClearHighlightAreas
+void SV_HudClearHighlightAreas( playerIdx )
+Turn off highlight areas on HudMap for player.
+
+SV_HudSetTracking
+void SV_HudSetTracking( playerIdx, entity, [radius], [color] )
+Highlight area around entity on HudMap.
+
+SV_HudClearTrackingList
+void SV_HudClearTrackingList( playerIdx )
+Clear tracking entities list and turn off higlighting area around them.
+
+SV_CombatLog
+void SV_CombatLog( text )
+Report specified message to combatlog on server and client. Call on server.
+
+SV_LogMessage
+void SV_LogMessage( msg )
+Send message to clients' combat log.
+
+DS_GiveExplorationReward
+void DS_GiveExplorationReward( playerIdx, rewardTable, analyticsMeta)
+Give specified resource reward to player
+
+DS_TransferToNewInstance
+void DS_TransferToNewInstance( playerIdx, transferParamsTable)
+transfer player by player index and his party members (if exists) into another instance of current gameplay
+
+DS_GetAvailableAdventure
+table DS_GetAvailableAdventure( playerIdx )
+
+DS_GetMemorableAdventure
+string DS_GetAvailableAdventure( void )
+
+DS_GetRewardLimits
+table DS_GetRewardLimits( playerIdx )
+
+DS_CompleteAdventure
+void DS_CompleteAdventure( playerIdx, adventureName )
+
+DS_AddAchievementProgress
+void DS_AddAchievementProgress( playerIdx, achievementName, value )
+
+DS_IncExplorationStatistic
+void DS_IncExplorationStatistic( playerIdx, statName, [value] )
+
+DS_ExplorationAnalytics
+void DS_ExplorationAnalytics( playerIdx, tableData )
+
+SV_OnExplorationEventComplete
+void SV_OnExplorationEventComplete( playerIdx )
+Increment exploration event quest progress.
+
+SV_QuestScriptEvent
+void SV_QuestScriptEvent( playerIdx, eventName, value )
+Increment quest progress.
+
+SV_StripeScriptEvent
+void SV_StripeScriptEvent( playerIdx, eventName [,value] )
+Increment stripe progress.
+
+CL_WantAutomatization
+void CL_WantAutomatization( strCheatName [,tParameters] )
+Send client request to use some cheat
+
+SV_HudTaskShow
+void SV_HudTaskShow( [dict], [playerIdx] )
+Add mission task description in hud window. dict fields:id,title,desc,ico,param1,param2,timer,user_cancel,type
+
+SV_HudTaskClear
+void SV_HudTaskClear( [taskId], [playerIdx] )
+Clear mission tasks in hud window
+
+SV_HudTaskUpdate
+void SV_HudTaskUpdate( [dict], [playerIdx] )
+Update mission task params. dict fields:id,param1,param2,timer
+
+SV_HudSetTitleLayout
+void SV_HudSetTitleLayout( [visible], [pveLayout], [playerIdx] )
+Set hud title visibility and layout type
+
+SV_HudSetMainTitle
+void SV_HudSetMainTitle( [text], [param1], [param2], [playerIdx] )
+Set hud main title text
+
+SV_HudUpdateMainTitle
+void SV_UpdateSetMainTitle( [param1], [param2], [playerIdx] )
+Update hud main title text params
+
+SV_HudSetSubTitle
+void SV_HudSetSubTitle( [text], [playerIdx] )
+Set hud sub title text
+
+SV_HudUpdateSubTitle
+void SV_HudUpdateSubTitle( [param1], [param2], [playerIdx] )
+Update hud sub title text params
+
+SV_HudSetVipPlayer
+void SV_HudSetVipPlayer( int playerIdx, [bool set] )
+Set player for special hud markers display
+
+SV_HudSetStaticTeams
+void SV_HudSetStaticTeams([team1], [team2])
+Set team relationship groups for static coloring in hud
+
+HudShowCharacterMsg
+void HudShowCharacterMsg( dict )
+Show special character msg in hud.dict fields:text,title,ico,sound,time,color,playerIdx,username,force,voiceSentence
+
+HudClearCharacterMsgQueue
+void HudClearCharacterMsgQueue()
+Clear character msg queue.
+
+ShowTutorialControlWnd
+void ShowTutorialControlWnd()
+Show tutorial control wnd
+
+ShowUiHint
+void ShowUiHint( string hintName )
+Show UI hint with name
+
+CloseUiHint
+void CloseUiHint( string hintName )
+Close UI hint with name
+
+GetCurrentUiHint
+string GetCurrentUiHint()
+Return current hint on screen
+
+UiSetBrawlMode
+void UiSetBrawlMode( bool brawlMode )
+Set hud window in brawl mode
+
+SV_HudShowBossProgress
+void SV_HudShowBossProgress( [dict], [playerIdx] )
+Show boss progress element in hud. dict fields:title,0<=value<=1,ico.
+
+SV_HudUpdateBossProgress
+void SV_HudUpdateBossProgress( [value], [playerIdx] )
+Update boss progress element in hud, 0<=value<=1
+
+SV_HudHideBossProgress
+void SV_HudHideBossProgress( [playerIdx] )
+Hide boss progress element in hud
+
+SV_HudShowSurveillanceProgress
+void SV_HudShowSurveillanceProgress( [value], [playerIdx] )
+Show surveillance progress element in hud. 0<=value<=1.
+
+SV_HudHideSurveillanceProgress
+void SV_HudHideSurveillanceProgress( [playerIdx] )
+Hide surveillance progress element in hud
+
+SV_HudShowThreatAlert
+void SV_HudShowThreatAlert( [vec3 list], [playerIdx] )
+Show threat alert for enemy positions
+
+SV_HudShowTaskRestartTimer
+void SV_HudShowTaskRestartTimer( [time], [playerIdx] )
+Show mission restart timer.
+
+SV_HudSetGameHint
+void SV_HudSetGameHint( [dict], [playerIdx] )
+Show hint message in hud. dict fields:text,ico,param1,param2
+
+SV_HudHideGameHint
+void SV_HudHideGameHint( [playerIdx] )
+Hide hint message in hud.
+
+SV_HudSetGameplayDesc
+void SV_HudSetGameplayDesc( [dict], [playerIdx] )
+Set gameplay description for briefing/map. dict fields:title,desc
+
+CarCamera_SetFocusEntity
+void CarCamera_SetFocusEntity( obj entity )
+Car camera set aim on entity
+
+SV_CustomHudMarkerSetAtPos
+uint SV_CustomHudMarkerSetAtPos(pos, markerDefName, team, [wantNotification])
+Set hud marker at pos (team=-1 - all teams); returns marker id
+
+SV_CustomHudMarkerSetAtEntity
+uint SV_CustomHudMarkerSetAtEntity(entityId, markerDefName, team, [wantNotification])
+Set hud marker at entity (team=-1 - all teams); returns marker id
+
+SV_CustomHudMarkerRemoveById
+void SV_CustomHudMarkerRemoveById(markerId, team)
+Remove hud marker with specified marker id (team=-1 - all teams)
+
+SV_CustomHudMarkerRemoveByEntity
+void SV_CustomHudMarkerRemoveByEntity(entityId, team)
+Remove hud marker from entity (team=-1 - all teams)
+
+SV_CustomHudMarkerRemoveAll
+void SV_CustomHudMarkerRemoveAll(team)
+Remove all hud markers for team (team=-1 - all teams)
+
+ScreenFade
+int ScreenFade( table params )
+Temp screen fade in for player
+
+TimerGetGameTime
+float TimerGetGameTime()
+return game time in seconds
+
+TimerGetRealTime
+float TimerGetRealTime()
+return real time in seconds
+
+TimerGetSysFameTime
+float TimerGetSysFameTime()
+return unscaled frame len in seconds
+
+GetCameraPos
+Vec3 GetCameraPos()
+return the position of active camera
+
+GetCameraDir
+Vec3 GetCameraDir()
+return the direction of active camera
+
+SetCameraPos
+void SetCameraPos(Vec3 pos, [Vec3 aimPos], [Vec3 up])
+setup position (aim and up) of active camera
+
+SetCameraAimPos
+void SetCameraAimPos(Vec3)
+setup aim of active camera
+
+IsPC
+bool IsPC()
+return true for PC platform target
+
+IsMac
+bool IsMac()
+return true for MacOS platform target
+
+IsLinux
+bool IsLinux()
+return true for Linux platform target
+
+IsGamepadConnected
+bool IsGamepadConnected()
+Return true when if a gamepad is connected
+
+TextPicker_IsActive
+bool TextPicker_IsActive()
+Return true if TextPicker is enabled and active
+
+AddOnScreenDebugMessage
+void AddOnScreenDebugMessage(text, timeToDisplay, [color], [fontScale], [key])
+Draw temp debug message
+
+Scene_SetWindState
+void Scene_SetWindState(bool enable, [float force [0.0-1.0]], [Vec3 direction])

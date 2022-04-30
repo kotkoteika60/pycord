@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Тест постинга
+{% endblock %}
+
+{% block body %}
+<form method="post" id="post_form">
+    <textarea name="content" id="post_content" placeholder="Напиши чёнить..." cols="30" rows="10" minlength="1"></textarea>
+    <br>
+    <input type="submit" name="do_post">
+</form>
+{% endblock %}

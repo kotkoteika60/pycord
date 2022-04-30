@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}
+pycord
+{% endblock %}
+
+{% block body %}
+<span style="font-size: 256px; position: absolute; left: 300vh; width: 100vh; display: none;">это фича такая</span>
+<div id="app-main">
+    <div class="scroller" dir="ltr" style="overflow: hidden scroll; padding-right: 0px; background: #1e1e1e; float: left;" id="guild_scroller">
+        <div id="guild_list"></div>
+        <div class="listItem"><button id="new_guild_btn" class="listImg" style="font-size: 24px;" title="Создать сервер" onclick="newGuildBtnDown()">+</button></div>
+    </div>
+    <div id="sidebar_channels" class="sidebar" style="float: left;">
+        <button class="channel_btn add" style="" id="new_channel_btn" onclick="newChannelBtnDown()">создать канал</button>
+        <hr noshade color="#333" width="240px" />
+        <div id="channel_list" style="height: calc(98vh - 50px);">
+        </div>
+        <div style="height: 50px; width: 238px; background: #222; border: 1px solid white;">
+            <div class="message disabled" id="user_block">
+                <span style="height: auto">
+                    <img src="" class="avatar" id="avatar">
+                </span>
+                <span class="username_block">
+                    <span style="font-weight: bold;" id="username"></span>
+                    <span style="margin-left: 3px; color: #dddddd;" id="user_tag"></span>
+                    <button class="btn-small close-btn" onclick="logout()" title="выход" style="width: 18px; height: 18px; font-size: 10px; margin-left: 5px;">x</button>
+                    <button class="btn-small" onclick="userSettingsDialog()" title="настройки" style="width: 18px; height: 18px;font-size: 10px;">#</button>
+                </span>
+                <div class="umessage_content" style="font-size: 10px;">Подключён к каналу: <span id="channel_name"></span></div>
+            </div>
+        </div>
+    </div>
+    <div class="chatContent" style="float: left;">
+        <div class="messagesWrapper" id="messagesWrapper" style="height: calc(98vh - 0px); width: auto;">
+            <ol style="list-style: none; margin-left: -30px;" id="messagesContainer"></ol>
+        </div>
+        <div class="post_form" id="post_form" style="" data-min_height="50">
+            <span id="message_content" contenteditable="plaintext-only" style="font-size: 16px; outline:none; overflow: auto; float: left; min-height: 50px; max-height: 400px; background: #1e1e1e; width: 80%;"></span>
+            <div style="width: 40px; float: left;">
+            <button class="btn-small" onclick="openAttachmentsMenu()">+</button>
+            <button class="btn-small" onclick="openSmilesMenu()">☺</button>
+            </div>
+        </div>
+    </div>
+    <div id="sidebar_members" class="sidebar" style="float: left;">
+    </div>
+</div>
+<div id="draggable" style="display: none;"></div>
+<div class="js-snackbar-container"></div>
+{% endblock %}
